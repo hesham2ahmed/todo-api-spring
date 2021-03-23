@@ -1,2 +1,2 @@
 # todo-api-spring
-with mongodb as database and jwt authentication method
+With mongodb as database
