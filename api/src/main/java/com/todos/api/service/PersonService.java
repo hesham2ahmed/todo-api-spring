@@ -30,10 +30,11 @@ public class PersonService implements UserDetailsService {
         return personOptional.orElseThrow(()-> new UsernameNotFoundException("User with email " + email + " not found"));
     }
 
-    public Person save(Person person) throws DuplicateKeyException{
+    public void save(Person person) throws DuplicateKeyException{
         person.setPassword(passwordEncoder.encode(person.getPassword()));
-        return personRepo.save(person)
+        personRepo.save(person)
                 .orElseThrow(()->new DuplicateKeyException("Person with email " + person.getEmail() + " is already exist!"));
+        return;
     }
 
 }

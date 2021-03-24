@@ -18,13 +18,13 @@ public class PersonController {
     public ResponseEntity<Person> signUp(@RequestBody Person person){
         HttpStatus httpStatus;
         try{
-            person = personService.save(person);
+            personService.save(person);
             httpStatus = HttpStatus.CREATED;
         }catch (DuplicateKeyException e){
             e.printStackTrace();
             httpStatus = HttpStatus.BAD_REQUEST;
         }
-        return new ResponseEntity<>(person, httpStatus);
+        return new ResponseEntity<>(null, httpStatus);
     }
 
 }
