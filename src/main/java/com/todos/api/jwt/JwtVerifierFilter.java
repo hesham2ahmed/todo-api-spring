@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import org.assertj.core.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -51,7 +50,7 @@ public class JwtVerifierFilter extends OncePerRequestFilter {
 
             String id = body.getSubject();
 
-            var authorities = (List<Map<String, String>>) body.get("authorities");
+            List<Map<String, String>> authorities = (List<Map<String, String>>) body.get("authorities");
 
             Set<SimpleGrantedAuthority> simpleGrantedAuthorities = authorities.stream()
                     .map(m -> new SimpleGrantedAuthority(m.get("authority")))
