@@ -87,7 +87,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>todos--demo</finalName>
+		<finalName>todos-app-demo</finalName>
 	</build>
 
 </project>
