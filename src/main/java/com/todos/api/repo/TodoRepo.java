@@ -2,6 +2,7 @@ package com.todos.api.repo;
 
 import com.todos.api.model.Person;
 import com.todos.api.model.Todo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -9,13 +10,13 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class TodoRepo {
-
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     public Optional<Todo> addTodo(Todo todo){
         Criteria criteria = Criteria.where("id").is(todo.getPersonId());

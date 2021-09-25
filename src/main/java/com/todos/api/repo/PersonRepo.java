@@ -1,5 +1,6 @@
 package com.todos.api.repo;
 import com.todos.api.model.Person;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -10,10 +11,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Repository
 public class PersonRepo{
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     public Optional<Person> save(Person person)  {
         Optional<Person> optionalPerson;

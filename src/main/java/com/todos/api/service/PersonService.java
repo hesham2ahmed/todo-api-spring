@@ -3,6 +3,7 @@ package com.todos.api.service;
 import com.todos.api.model.Person;
 import com.todos.api.model.Todo;
 import com.todos.api.repo.PersonRepo;
+import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -16,12 +17,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class PersonService implements UserDetailsService {
-    @Autowired
-    private PersonRepo personRepo;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PersonRepo personRepo;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override

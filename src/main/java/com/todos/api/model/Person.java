@@ -28,7 +28,7 @@ public class Person implements UserDetails {
     @Indexed(sparse = true, unique = true)
     private String email;
     private String password;
-    private Set<Todo> todos;
+    private List<Todo> todos;
     private Date joinDate;
 
     @Override
