@@ -59,7 +59,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(jwtConfig.getAuthorizationHeader(), jwtConfig.getTokenPrefix() + token);
 
-        response.getWriter().print(new ObjectMapper().writeValueAsString(person.getTodos()));
+//        response.getWriter().print(new ObjectMapper().writeValueAsString(person.getTodos()));
     }
 
     private String prepareToken(Person person, Authentication authResult){
