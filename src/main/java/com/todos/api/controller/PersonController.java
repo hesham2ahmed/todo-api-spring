@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
     private final PersonService personService;
 
-    @PostMapping
+    @PostMapping("signup")
     public ResponseEntity<Person> signUp(@RequestBody Person person){
         HttpStatus httpStatus;
         System.out.println(person);
