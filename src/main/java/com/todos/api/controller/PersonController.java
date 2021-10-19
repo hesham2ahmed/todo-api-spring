@@ -2,6 +2,7 @@ package com.todos.api.controller;
 
 import com.todos.api.model.Person;
 import com.todos.api.service.PersonService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -9,12 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/person")
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/users")
 public class PersonController {
-    @Autowired
-    private PersonService personService;
+    private final PersonService personService;
 
-    @PostMapping("/signup")
+    @PostMapping
     public ResponseEntity<Person> signUp(@RequestBody Person person){
         HttpStatus httpStatus;
         try{

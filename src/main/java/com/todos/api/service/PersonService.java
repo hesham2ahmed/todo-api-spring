@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ public class PersonService implements UserDetailsService {
 
     public void save(Person person) throws DuplicateKeyException{
         person.setPassword(passwordEncoder.encode(person.getPassword()));
+        person.setJoinDate(new Date());
         personRepo.save(person)
                 .orElseThrow(()->new DuplicateKeyException("Person with email " + person.getEmail() + " is already exist!"));
         return;
