@@ -18,7 +18,6 @@ public class PersonController {
     @PostMapping("signup")
     public ResponseEntity<Person> signUp(@RequestBody Person person){
         HttpStatus httpStatus;
-        System.out.println(person);
         try{
             personService.save(person);
             httpStatus = HttpStatus.CREATED;
