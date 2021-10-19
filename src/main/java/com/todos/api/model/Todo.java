@@ -15,5 +15,5 @@ public class Todo {
     private String desc;
     private Date creatDate;
     private Date endDate;
-    private boolean completed;
+    private Boolean completed;
 }
