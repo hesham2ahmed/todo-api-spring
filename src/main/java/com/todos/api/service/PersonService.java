@@ -1,21 +1,16 @@
 package com.todos.api.service;
 
 import com.todos.api.model.Person;
-import com.todos.api.model.Todo;
 import com.todos.api.repo.PersonRepo;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.data.domain.Example;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -34,9 +29,9 @@ public class PersonService implements UserDetailsService {
     public void save(Person person) throws DuplicateKeyException{
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setJoinDate(new Date());
+        person.setTodos(new ArrayList<>());
         personRepo.save(person)
                 .orElseThrow(()->new DuplicateKeyException("Person with email " + person.getEmail() + " is already exist!"));
-        return;
     }
 
 }
