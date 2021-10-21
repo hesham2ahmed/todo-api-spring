@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -22,11 +23,12 @@ public class PersonService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Person> personOptional = personRepo.findPersonByEmail(email);
+        Optional<Person> personOptional = personRepo.findPersonByEmail(email.toLowerCase());
         return personOptional.orElseThrow(()-> new UsernameNotFoundException("User with email " + email + " not found"));
     }
 
     public void save(Person person) throws DuplicateKeyException{
+        person.setEmail(person.getEmail().toLowerCase());
         person.setPassword(passwordEncoder.encode(person.getPassword()));
         person.setJoinDate(new Date());
         person.setTodos(new ArrayList<>());
