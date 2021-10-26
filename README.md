@@ -1,4 +1,3 @@
 # todo-api-spring
 # todo spring boot application with mongodb
-# link : https://todos-app-demo.herokuapp.com/
-# be sure the url path starting with "/api/v1/"
+# link : https://todos-app-api-v1.herokuapp.com/api/v1
